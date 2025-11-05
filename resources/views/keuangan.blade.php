@@ -1,123 +1,145 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body class="bg-[#ECF6F6] text-slate-800 min-h-screen">
-    <div class="mx-auto max-w-[420px] px-4 pt-6 pb-20">
-        <!-- AppBar -->
-        <div class="bg-white shadow rounded-2xl px-4 py-3 flex items-center justify-between">
-            <div class="flex items-center gap-2">
-                <span class="text-xs text-slate-400">9:41</span>
-            </div>
-            <h1 class="font-semibold text-base">Keuangan</h1>
-            <div class="w-6"></div>
-        </div>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Keuangan</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    :root{ --brand:#133F47; --bg:#ECF6F6; }
+    body{ background:var(--bg); }
+    .btn-pill{ border-radius: 999px; padding:.9rem 1.25rem; font-weight:600; }
+    .amount-pos{ color:#0f9d58; font-weight:600; }
+    .amount-neg{ color:#d93025; font-weight:600; }
+    .card-list{ border-radius: 14px; }
+    .mini-badge{ font-size:.7rem; }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" defer></script>
+  </head>
+<body>
+  <!-- Top bar -->
+  <nav class="navbar navbar-expand-lg bg-white shadow-sm">
+    <div class="container">
+      <span class="navbar-brand fw-semibold">Keuangan</span>
+      <div class="ms-auto d-none d-lg-flex gap-2">
+        <a class="btn btn-outline-secondary btn-sm" href="/">Home</a>
+      </div>
+    </div>
+  </nav>
 
-        <!-- Actions -->
-        <div class="mt-4 space-y-3">
-            <a href="#" class="block w-full rounded-full bg-[#133F47] text-white text-sm font-medium px-5 py-3 shadow">
-                Grafik Keuangan
-            </a>
-            <a href="#" class="block w-full rounded-full bg-[#133F47] text-white text-sm font-medium px-5 py-3 shadow">
-                Aliran Kas
-            </a>
-        </div>
-
-        <!-- History -->
-        <section class="mt-6">
-            <div class="flex items-center justify-between mb-2">
-                <h2 class="font-semibold">Riwayat Keuangan</h2>
-                <div class="relative">
-                    <select class="appearance-none text-xs bg-white border border-slate-200 rounded-full px-3 py-1 pr-7 shadow focus:outline-none">
-                        <option>Filter</option>
-                        <option>Semua</option>
-                        <option>Pemasukan</option>
-                        <option>Pengeluaran</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="space-y-3">
-                <!-- Item -->
-                <div class="bg-white rounded-xl px-3 py-3 shadow flex items-start justify-between">
-                    <div>
-                        <div class="text-xs font-medium text-slate-700">ORD1443</div>
-                        <div class="text-sm text-emerald-600 font-semibold">Rp 50.000</div>
-                    </div>
-                    <div class="text-right">
-                        <div class="text-[11px] text-slate-500 mb-1">18/06/2025</div>
-                        <a href="#" class="text-[11px] bg-slate-800 text-white px-3 py-1 rounded-md">Detail</a>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-xl px-3 py-3 shadow flex items-start justify-between">
-                    <div>
-                        <div class="text-xs font-medium text-slate-700">ORD1442</div>
-                        <div class="text-sm text-emerald-600 font-semibold">Rp 30.000</div>
-                    </div>
-                    <div class="text-right">
-                        <div class="text-[11px] text-slate-500 mb-1">18/06/2025</div>
-                        <a href="#" class="text-[11px] bg-slate-800 text-white px-3 py-1 rounded-md">Detail</a>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-xl px-3 py-3 shadow flex items-start justify-between">
-                    <div>
-                        <div class="text-xs font-medium text-slate-700">SPD102</div>
-                        <div class="text-sm text-red-600 font-semibold">Rp 200.000</div>
-                    </div>
-                    <div class="text-right">
-                        <div class="text-[11px] text-slate-500 mb-1">18/06/2025</div>
-                        <a href="#" class="text-[11px] bg-slate-800 text-white px-3 py-1 rounded-md">Detail</a>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-xl px-3 py-3 shadow flex items-start justify-between">
-                    <div>
-                        <div class="text-xs font-medium text-slate-700">ORD1441</div>
-                        <div class="text-sm text-emerald-600 font-semibold">Rp 70.000</div>
-                    </div>
-                    <div class="text-right">
-                        <div class="text-[11px] text-slate-500 mb-1">18/06/2025</div>
-                        <a href="#" class="text-[11px] bg-slate-800 text-white px-3 py-1 rounded-md">Detail</a>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-xl px-3 py-3 shadow flex items-start justify-between">
-                    <div>
-                        <div class="text-xs font-medium text-slate-700">ORD1440</div>
-                        <div class="text-sm text-emerald-600 font-semibold">Rp 50.000</div>
-                    </div>
-                    <div class="text-right">
-                        <div class="text-[11px] text-slate-500 mb-1">18/06/2025</div>
-                        <a href="#" class="text-[11px] bg-slate-800 text-white px-3 py-1 rounded-md">Detail</a>
-                    </div>
-                </div>
-            </div>
-        </section>
+  <main class="container py-4">
+    <!-- Actions -->
+    <div class="row g-3 align-items-stretch">
+      <div class="col-12 col-md-6 col-lg-4">
+        <a class="btn btn-dark w-100 btn-pill" style="background:var(--brand)" href="#">
+          <i class="bi bi-graph-up"></i> Grafik Keuangan
+        </a>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4">
+        <a class="btn btn-dark w-100 btn-pill" style="background:var(--brand)" href="#">
+          <i class="bi bi-cash-coin"></i> Aliran Kas
+        </a>
+      </div>
     </div>
 
-    <!-- Bottom Navigation -->
-    <nav class="fixed bottom-0 left-0 right-0">
-        <div class="mx-auto max-w-[420px] px-4">
-            <div class="bg-[#133F47] text-white rounded-t-2xl h-16 flex items-center justify-around">
-                <a href="#" class="flex flex-col items-center text-xs opacity-80">
-                    <span>🏠</span>
-                </a>
-                <a href="#" class="flex flex-col items-center text-xs opacity-80">
-                    <span>🧺</span>
-                </a>
-                <a href="#" class="flex flex-col items-center text-xs">
-                    <div class="bg-white text-[#133F47] rounded-full w-10 h-10 flex items-center justify-center -mt-6 shadow">📊</div>
-                </a>
-                <a href="#" class="flex flex-col items-center text-xs opacity-80">
-                    <span>👤</span>
-                </a>
-            </div>
+    <!-- History -->
+    <div class="row mt-4">
+      <div class="col-12 col-lg-10 col-xl-8">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <h5 class="mb-0 fw-semibold">Riwayat Keuangan</h5>
+          <div>
+            <select class="form-select form-select-sm w-auto d-inline-block">
+              <option selected>Filter</option>
+              <option>Semua</option>
+              <option>Pemasukan</option>
+              <option>Pengeluaran</option>
+            </select>
+          </div>
         </div>
-    </nav>
+
+        <div class="vstack gap-3">
+          <!-- Item -->
+          <div class="card card-list shadow-sm">
+            <div class="card-body d-flex justify-content-between align-items-start">
+              <div>
+                <div class="small text-secondary">ORD1443</div>
+                <div class="amount-pos">Rp 50.000</div>
+              </div>
+              <div class="text-end">
+                <div class="text-muted mini-badge mb-2">18/06/2025</div>
+                <a href="#" class="btn btn-sm btn-dark"><i class="bi bi-eye"></i> Detail</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="card card-list shadow-sm">
+            <div class="card-body d-flex justify-content-between align-items-start">
+              <div>
+                <div class="small text-secondary">ORD1442</div>
+                <div class="amount-pos">Rp 30.000</div>
+              </div>
+              <div class="text-end">
+                <div class="text-muted mini-badge mb-2">18/06/2025</div>
+                <a href="#" class="btn btn-sm btn-dark">Detail</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="card card-list shadow-sm">
+            <div class="card-body d-flex justify-content-between align-items-start">
+              <div>
+                <div class="small text-secondary">SPD102</div>
+                <div class="amount-neg">Rp 200.000</div>
+              </div>
+              <div class="text-end">
+                <div class="text-muted mini-badge mb-2">18/06/2025</div>
+                <a href="#" class="btn btn-sm btn-dark">Detail</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="card card-list shadow-sm">
+            <div class="card-body d-flex justify-content-between align-items-start">
+              <div>
+                <div class="small text-secondary">ORD1441</div>
+                <div class="amount-pos">Rp 70.000</div>
+              </div>
+              <div class="text-end">
+                <div class="text-muted mini-badge mb-2">18/06/2025</div>
+                <a href="#" class="btn btn-sm btn-dark">Detail</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="card card-list shadow-sm">
+            <div class="card-body d-flex justify-content-between align-items-start">
+              <div>
+                <div class="small text-secondary">ORD1440</div>
+                <div class="amount-pos">Rp 50.000</div>
+              </div>
+              <div class="text-end">
+                <div class="text-muted mini-badge mb-2">18/06/2025</div>
+                <a href="#" class="btn btn-sm btn-dark">Detail</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer / Bottom nav (web) -->
+  <footer class="border-top py-3 bg-white mt-4">
+    <div class="container d-flex justify-content-between small text-muted">
+      <span>&copy; LaundBASS</span>
+      <div class="d-flex gap-3">
+        <a class="text-decoration-none" href="#"><i class="bi bi-house"></i></a>
+        <a class="text-decoration-none" href="#"><i class="bi bi-basket"></i></a>
+        <a class="text-decoration-none" href="#"><i class="bi bi-bar-chart"></i></a>
+        <a class="text-decoration-none" href="#"><i class="bi bi-person"></i></a>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
