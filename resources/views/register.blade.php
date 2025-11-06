@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Login</title>
+  <title>Create an Account</title>
 
   <!-- Bootstrap 5 CDN -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -43,6 +43,12 @@
       color: var(--brand-color);
     }
 
+    .text-link {
+      color: var(--brand-color);
+      text-decoration: underline;
+      font-weight: 500;
+    }
+
     .lead-muted {
       color: #9da1a6;
       font-size: 15px;
@@ -72,23 +78,42 @@
 
     .btn-secondary.enabled {
       background-color: var(--brand-color);
+      color: #fff;
     }
 
-    .text-link {
-      color: var(--brand-color);
+    .terms {
+      color: #222;
+      font-size: 13px;
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+
+    .terms a {
       text-decoration: underline;
+      color: var(--brand-color);
       font-weight: 500;
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #bdbdbd;
+      margin: 18px 0;
+    }
+
+    .divider::before,
+    .divider::after {
+      content: "";
+      height: 1px;
+      background: #e6e6e6;
+      flex: 1;
     }
 
     .bottom-cta {
       text-align: center;
-      margin-top: 48px;
+      margin-top: 36px;
       font-size: 15px;
-    }
-
-    .small-muted {
-      color: #6c757d;
-      font-size: 12px;
     }
   </style>
 </head>
@@ -99,43 +124,82 @@
       <div class="card-body">
 
         <!-- Header -->
-        <h1>Login to your account</h1>
-        <p class="lead-muted">It’s great to see you again.</p>
+        <h1>Create an account</h1>
+        <p class="lead-muted">Let’s create your account.</p>
 
         <!-- Form -->
-        <form id="loginForm" method="POST" action="#">
+        <form id="registerForm" method="POST" action="{{ route('register.store') }}">
           @csrf
 
           <div class="mb-3">
+            <label for="name" class="form-label">Full Name</label>
+            <input id="name"
+                   name="name"
+                   type="text"
+                   class="form-control @error('name') is-invalid @enderror"
+                   placeholder="Enter your full name"
+                   value="{{ old('name') }}"
+                   required>
+            @error('name')
+              <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+          </div>
+
+          <div class="mb-3">
             <label for="email" class="form-label">Email</label>
-            <input id="email" name="email" type="email" class="form-control" placeholder="Enter your email address" required>
+            <input id="email"
+                   name="email"
+                   type="email"
+                   class="form-control @error('email') is-invalid @enderror"
+                   placeholder="Enter your email address"
+                   value="{{ old('email') }}"
+                   required>
+            @error('email')
+              <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
           </div>
 
           <div class="mb-2">
             <label for="password" class="form-label">Password</label>
             <div class="input-group">
-              <input id="password" name="password" type="password" class="form-control" placeholder="Enter your password" required>
+              <input id="password"
+                     name="password"
+                     type="password"
+                     class="form-control @error('password') is-invalid @enderror"
+                     placeholder="Enter your password"
+                     required>
               <button type="button" class="btn btn-outline-secondary" id="togglePassword">
                 <i class="bi bi-eye"></i>
               </button>
             </div>
+            @error('password')
+              <div class="invalid-feedback d-block">{{ $message }}</div>
+            @enderror
           </div>
 
+          <!-- Confirm password (not required client-side) -->
           <div class="mb-3">
-            <p class="small-muted mb-0">
-              Forgot your password?
-              <a href="#" class="text-link">Reset your password</a>
-            </p>
+            <label for="password_confirmation" class="form-label">Confirm Password</label>
+            <input id="password_confirmation"
+                   name="password_confirmation"
+                   type="password"
+                   class="form-control"
+                   placeholder="Repeat your password">
           </div>
+
+          <p class="terms">
+            By signing up you agree to our
+            <a href="#">Terms</a>, <a href="#">Privacy Policy</a>, and <a href="#">Cookie Use</a>.
+          </p>
 
           <div class="d-grid">
-            <button id="loginBtn" type="submit" class="btn btn-secondary btn-lg" disabled>Login</button>
+            <button id="registerBtn" type="submit" class="btn btn-secondary btn-lg" disabled>Create an Account</button>
           </div>
         </form>
 
         <!-- Bottom link -->
         <div class="bottom-cta">
-          <p class="mb-0">Don’t have an account? <a href="/register" class="text-link">Sign Up</a></p>
+          <p class="mb-0">Already have an account? <a href="/login" class="text-link">Log In</a></p>
         </div>
 
       </div>
@@ -147,7 +211,8 @@
     const togglePassword = document.getElementById('togglePassword');
     const passwordField = document.getElementById('password');
     const emailField = document.getElementById('email');
-    const loginBtn = document.getElementById('loginBtn');
+    const nameField = document.getElementById('name');
+    const registerBtn = document.getElementById('registerBtn');
 
     // Toggle password visibility
     togglePassword.addEventListener('click', function () {
@@ -158,17 +223,18 @@
         : '<i class="bi bi-eye-slash"></i>';
     });
 
-    // Enable button when both fields filled
+    // Enable button when all fields filled
     function updateButtonState() {
-      if (emailField.value.trim() && passwordField.value.trim()) {
-        loginBtn.disabled = false;
-        loginBtn.classList.add('enabled');
+      if (nameField.value.trim() && emailField.value.trim() && passwordField.value.trim()) {
+        registerBtn.disabled = false;
+        registerBtn.classList.add('enabled');
       } else {
-        loginBtn.disabled = true;
-        loginBtn.classList.remove('enabled');
+        registerBtn.disabled = true;
+        registerBtn.classList.remove('enabled');
       }
     }
 
+    nameField.addEventListener('input', updateButtonState);
     emailField.addEventListener('input', updateButtonState);
     passwordField.addEventListener('input', updateButtonState);
   </script>
