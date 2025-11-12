@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\PesananController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,7 @@ use App\Http\Controllers\Auth\RegisterController;
    ----------------------------*/
 Route::view('/login', 'login')->name('login');
 Route::view('/login-proto', 'login');
+Route::post('/login', [LoginController::class, 'store'])->name('login.store');
 
 // Register (GET -> show form, POST -> store)
 Route::get('/register', [RegisterController::class, 'show'])->name('register');

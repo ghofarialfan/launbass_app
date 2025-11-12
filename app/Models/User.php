@@ -8,19 +8,31 @@ class User extends Authenticatable
 {
     use Notifiable;
 
-    protected $table = 'User';       // change if your table name differs (e.g. 'users')
-    protected $primaryKey = 'IDUser';// change if PK differs
+    // match your actual database table
+    protected $table = 'user';
+
+    // match your primary key
+    protected $primaryKey = 'IDUser';
     public $incrementing = true;
     protected $keyType = 'int';
-    public $timestamps = false;      // set to true if your table has created_at/updated_at
+    public $timestamps = false; // your table doesn't have created_at / updated_at
 
+    // match column names in your database
     protected $fillable = [
         'Nama',
-        'email',
-        'password',
+        'Email',
+        'Password',
+        'Jabatan',
     ];
 
+    // if you ever call $user->password, it will return the correct column
+    public function getAuthPassword()
+    {
+        return $this->Password;
+    }
+
+    // hide sensitive info if you ever return JSON
     protected $hidden = [
-        'password',
+        'Password',
     ];
 }
