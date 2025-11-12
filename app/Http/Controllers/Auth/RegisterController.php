@@ -22,28 +22,29 @@ class RegisterController extends Controller
             'name' => ['required','string','max:255'],
             'email' => [
                 'required','string','email','max:255',
-                Rule::unique('User','email'), // change table name if needed
+                // table name is lowercase 'user' and column is 'Email' in your DB
+                Rule::unique('user', 'Email'),
             ],
             'password' => ['required','string','min:4'],
         ]);
 
         // create user (plain-text password for demo)
         $user = User::create([
-            'Nama' => $data['name'],
-            'email' => $data['email'],
-            'password' => $data['password'],
+            // map form inputs to the exact DB column names (case-sensitive)
+            'Nama'     => $data['name'],
+            'Email'    => $data['email'],
+            'Password' => $data['password'],
+            // optionally set a default role/jabatan if you want
+            'Jabatan'  => 'User',
         ]);
 
         // Create session entries to mark user as logged in
-        // Store the primary key and any needed display info
         session([
             'user_id'   => $user->IDUser,
-            'user_name' => $user->name,
-            // add any other metadata you want in session
+            'user_name' => $user->Nama,
         ]);
 
-        // (Optional) set a "remember" cookie/time - session lifetime controlled in config/session.php
-        // Redirect to home (protected) or anywhere you want
+        // Redirect to protected home
         return redirect('/')->with('success', 'Account created and logged in.');
     }
 }
