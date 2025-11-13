@@ -7,6 +7,18 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+## Kelompok 7 PPPL Kelas C
+
+<img src="/public/ppplphoto.jpg" alt="team's photo">
+
+Members:
+- (JunasVee) Arjuna Veetaraq - 5026231227
+- (rafdim) Rafael Dimas Khristianto - 5026231206
+- (zsky-le) Zaskia Muazatun M - 5026231021
+- ⁠(dzakiadfizz) Muhammad Dzaki Adfiz - 5026231150
+- (ghofarialfan) Alfan Ghofari Prasanna Firmansyah - 5026231208
+- (Javed-amani) Javed Amani Syauki - 5026231186
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:

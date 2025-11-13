@@ -17,7 +17,7 @@
         <h2 class="fw-bold">Data Pelanggan</h2>
     </header>
 
-    <main class="container py-3 flex-grow-1">
+    <main class="container py-3 grow">
         @yield('content')
     </main>
 
